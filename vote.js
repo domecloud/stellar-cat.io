@@ -61,7 +61,7 @@ const vote = (catId,id) => {
     $('#sendTo').attr('title', catId)
     $('#catName').text('แมว'+id)
     $('#exampleModal').modal('show')
-    document.querySelector('#confirmVote').addEventListener('click', (e) => {
+    document.querySelector('#confirmVoteForm').addEventListener('submit', (e) => {
         $('#confirmVote').text('รอสักครู่')
         $('#confirmVote').attr('disabled','disabled')
         e.preventDefault()
