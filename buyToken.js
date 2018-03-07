@@ -4,15 +4,15 @@ document.querySelector('#buyToken').addEventListener('submit', (e) => {
     $('#buyTokenButton').text('รอสักครู่')
     e.preventDefault()
     var destinationId = $('#userAccount').val();
+    var tokenFrom = $('#tokenFrom').val()
     var amount = $('#token').val();
-    createTransection(destinationId, amount);
+    createTransection(destinationId, amount, tokenFrom);
 })
 
-const createTransection = (destinationId, amount) => {
-
-    var FromSecret = 'SB7IDGP3OUG52ZFWH6SZKPXMOICY76BRDQQZ3AZBT24T5LWVZJKYJVSA'
-    StellarSdk.Network.useTestNetwork();
-    var server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
+const createTransection = (destinationId, amount, tokenFrom) => {
+    var FromSecret = tokenFrom
+    StellarSdk.Network.usePublicNetwork();
+    var server = new StellarSdk.Server('https://horizon.stellar.org');
     var sourceKeys = StellarSdk.Keypair
         .fromSecret(FromSecret);
     var transaction;

@@ -14,7 +14,7 @@ const createAccount=(secretKey, publicKey)=> {
 
     $.ajax({
         method: "GET",
-        url: "https://horizon-testnet.stellar.org/friendbot",
+        url: "https://horizon.stellar.org/",
         data: { addr: publicKey}
       })
         .done((response) => {

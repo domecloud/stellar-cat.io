@@ -1,4 +1,4 @@
-const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
+const server = new StellarSdk.Server('https://horizon.stellar.org');
 document.querySelector('#checkTransaction').addEventListener('submit', (e) => {
     $('#searchTransection').text('รอสักครู่')
     $('#searchTransection').attr('disabled','disabled')
@@ -10,18 +10,10 @@ document.querySelector('#checkTransaction').addEventListener('submit', (e) => {
 const search = (publick_key, account) => {
     server.loadAccount(publick_key).then((account) => {
         account.balances.forEach((balance) => {
-            $('#balanceToken').text(balance.balance + ' โทเคน')
+            $('#balanceToken').text(balance.balance + ' lumens')
             $('#cardBalanceToken').show();
             $('#searchTransection').text('ตรวจสอบ')
             $('#searchTransection').attr('disabled', false)
         });
     })
-
-    axios({
-        method: 'get',
-        url: 'https://horizon-testnet.stellar.org/accounts/'+publick_key+'/transactions',
-    }).then((response) => {
-        console.log(response.data)
-    })
-
 }
